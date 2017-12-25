@@ -1,0 +1,68 @@
+<html ng-app="myApp">
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	
+
+</head>
+	<body>
+		<div class="container" ng-controller="AppCtrl">
+		<h1>Employee Data</h1>
+		
+		<table ng-table="tableP" class="table">
+			<thead>
+				<tr>
+					<th>
+						Name
+					</th>
+					<th>
+						Last Name
+					</th>
+					<th>
+						Designation
+					</th>
+					<th>
+						Task
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input class="form-control" ng-model="emp.name">
+					</td>
+					<td><input class="form-control" ng-model="emp.lname">
+					</td>
+					<td><input class="form-control" ng-model="emp.designation">
+					</td>
+					<td><button class="btn" ng-click="addPerson()">+</button>
+					</td>
+					
+				</tr>
+				<tr ng-repeat="person in personList">
+
+					<td><span><span ng-show="person.isHidden">{{person.name}}</span>
+						<input class="form-control" ng-model="person.name" ng-hide="person.isHidden">
+					</td>
+					<td><span ng-show="person.isHidden">{{person.lname}}</span>
+						<input class="form-control" ng-model="person.lname" ng-hide="person.isHidden">
+					</td>
+					<td><span ng-show="person.isHidden">{{person.designation}}</span>
+						<input class="form-control" ng-model="person.designation" ng-hide="person.isHidden">
+					</td>
+					<td><button class="btn" ng-click="remove_record(person._id,person.index)"> - </button>
+					</td>
+					<td ng-show="person.isHidden"><button class="btn "  ng-click="edit(person._id,person.index)">Edit</button>
+					</td>
+					<td ng-hide="person.isHidden"><button class="btn "  ng-click="save(person.index)">Save</button>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+	<script src="controllers/controller.js"></script>
+</body>
+
+</body></html>
+	
+	
+	
